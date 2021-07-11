@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "a6394594-51a8-4eb1-9971-248f13eedea8",
+		"name": "FFM Auth Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Story 310: FFM OT member should be able to create another FFM OT member Copy",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "1.Create FFM platform administrative user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"tEst%$@1!\",\r\n  \"firstname\": \"David\",\r\n  \"lastname\": \"Williamson\",\r\n  \"username\": \"{{$randomUserName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://165.227.200.62:5001/api/v1/field-force/auth/register-admin-user",
+									"protocol": "http",
+									"host": [
+										"165",
+										"227",
+										"200",
+										"62"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"field-force",
+										"auth",
+										"register-admin-user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "1.1. Create FFM Platform OT member without email address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"tEst%$@1!\",\r\n  \"firstname\": \"David\",\r\n  \"lastname\": \"Williamson\",\r\n  \"username\": \"david.williamson2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://165.227.200.62:5001/api/v1/field-force/auth/register-admin-user",
+									"protocol": "http",
+									"host": [
+										"165",
+										"227",
+										"200",
+										"62"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"field-force",
+										"auth",
+										"register-admin-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.2. Create FFM Platform OT member without email and password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"\",\r\n  \"firstname\": \"David\",\r\n  \"lastname\": \"Williamson\",\r\n  \"username\": \"david.williamson2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://165.227.200.62:5001/api/v1/field-force/auth/register-admin-user",
+									"protocol": "http",
+									"host": [
+										"165",
+										"227",
+										"200",
+										"62"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"field-force",
+										"auth",
+										"register-admin-user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
